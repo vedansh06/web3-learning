@@ -1,8 +1,10 @@
 // Bits and Bytes in JS
 
+
 // Bit
 const x = 0;
 console.log(x);
+
 
 
 // Byte
@@ -10,9 +12,11 @@ const y = 202
 console.log(y);
 
 
+
 // Array of bytes
 const bytes = [202, 244, 1, 23]
 console.log(bytes);
+
 
 
 // UInt8Array in JS
@@ -23,6 +27,7 @@ let uint8Arr = new Uint8Array([0, 255, 127, 128]);
 uint8Arr[1] = 300;
 
 
+
 // Bytes to Ascii
 function bytesToAscii(byteArray) {
   return byteArray.map(byte => String.fromCharCode(byte)).join('');
@@ -31,6 +36,7 @@ function bytesToAscii(byteArray) {
 const bytess = [72, 101, 108, 108, 111]; 
 const asciiString = bytesToAscii(bytess);
 console.log(asciiString);
+
 
 
 // Ascii to bytes
@@ -47,7 +53,8 @@ const byteArray = asciiToBytes(ascii);
 console.log(byteArray); 
 
 
-UInt8Array to ascii
+
+// UInt8Array to ascii
 function bytesToAscii(byteArray) {
   return new TextDecoder().decode(byteArray);
 }
@@ -58,6 +65,7 @@ const asciiString = bytesToAscii(bytes);
 console.log(asciiString);
 
 
+
 // Ascii to UInt8Array
 function asciiToBytes(asciiString) {
   return new Uint8Array([...asciiString].map(char => char.charCodeAt(0)));
@@ -66,6 +74,7 @@ function asciiToBytes(asciiString) {
 const ascii = "Hello";
 const byteArray = asciiToBytes(ascii);
 console.log(byteArray); 
+
 
 
 // Array to hex
@@ -82,6 +91,7 @@ const hexString = arrayToHex(byteArray1);
 console.log(hexString); 
 
 
+
 // Hex to array
 function hexToArray(hexString) {
   const byteArray = new Uint8Array(hexString.length / 2);
@@ -96,7 +106,8 @@ const byteArrayFromHex = hexToArray(hex);
 console.log(byteArrayFromHex); 
 
 
-Encode
+
+// Encode
 const bs58 = require('bs58');
 
 function uint8ArrayToBase58(uint8Array) {
@@ -109,7 +120,7 @@ console.log(base58String);
 
 
 
-Decode
+// Decode
 const bs58 = require('bs58');
 
 function base58ToUint8Array(base58String) {
@@ -121,14 +132,13 @@ const byteArrayFromBase58 = base58ToUint8Array(base58);
 console.log(byteArrayFromBase58); 
 
 
-Symetric encryption
+
+// Symetric encryption
 const crypto = require('crypto');
 
-// Generate a random encryption key
 const key = crypto.randomBytes(32); 
 const iv = crypto.randomBytes(16); 
 
-// Function to encrypt text
 function encrypt(text) {
     const cipher = crypto.createCipheriv('aes-256-cbc', key, iv);
     let encrypted = cipher.update(text, 'utf8', 'hex');
@@ -136,7 +146,6 @@ function encrypt(text) {
     return encrypted;
 }
 
-// Function to decrypt text
 function decrypt(encryptedText) {
     const decipher = crypto.createDecipheriv('aes-256-cbc', key, iv);
     let decrypted = decipher.update(encryptedText, 'hex', 'utf8');
@@ -144,7 +153,6 @@ function decrypt(encryptedText) {
     return decrypted;
 }
 
-// Example usage
 const textToEncrypt = 'Hello, World!';
 const encryptedText = encrypt(textToEncrypt);
 const decryptedText = decrypt(encryptedText);
@@ -154,7 +162,8 @@ console.log('Encrypted Text:', encryptedText);
 console.log('Decrypted Text:', decryptedText);
 
 
-//! Public-Public Keypair
+
+//! Public-Private Keypair
 
 import * as ed from "@noble/ed25519";
 
@@ -162,7 +171,6 @@ async function main() {
   const privKey = ed.utils.randomPrivateKey();
   const message = new TextEncoder().encode("hello world");
 
-  // ✅ CORRECT for v1.7.1
   const pubKey = await ed.getPublicKey(privKey);
   const signature = await ed.sign(message, privKey);
   const isValid = await ed.verify(signature, message, pubKey);
@@ -176,21 +184,18 @@ async function main() {
 main();
 
 
+
 import { Keypair } from "@solana/web3.js";
 import nacl from "tweetnacl";
 
-// Generate a new keypair
 const keypair = Keypair.generate();
 
-// Extract the public and private keys
 const publicKey = keypair.publicKey.toString();
 const secretKey = keypair.secretKey;
 
-// Display the keys
 console.log("Public Key:", publicKey);
 console.log("Private Key (Secret Key):", secretKey);
 
-// Convert the message "hello world" to a Uint8Array
 const message = new TextEncoder().encode("hello world");
 
 const signature = nacl.sign.detached(message, secretKey);
@@ -203,12 +208,13 @@ const result = nacl.sign.detached.verify(
 console.log(result);
 
 
+
 //? Mnemonics
 import { generateMnemonic } from 'bip39';
 
-// Generate a 12-word mnemonic
 const mnemonic = generateMnemonic();
 console.log('Generated Mnemonic:', mnemonic);
+
 
 
 //* Seed phrase
@@ -217,6 +223,7 @@ import { generateMnemonic, mnemonicToSeedSync } from "bip39";
 const mnemonic = generateMnemonic();
 console.log("Generated Mnemonic:", mnemonic);
 const seed = mnemonicToSeedSync(mnemonic);
+
 
 
 //! Derivation paths
