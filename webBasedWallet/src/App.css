@@ -1,0 +1,181 @@
+/* ULTRA PREMIUM BACKGROUND */
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: radial-gradient(circle at top, #101010, #000000);
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* PAGE CONTAINER */
+.up-wrapper {
+  max-width: 1100px;
+  margin: auto;
+  padding: 40px 20px;
+  text-align: center;
+  animation: fadeIn 1s ease-out;
+}
+
+/* TITLE */
+.up-title {
+  font-size: 45px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #9d6bff, #4fd2ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.up-subtitle {
+  color: #bbb;
+  margin-top: 8px;
+  margin-bottom: 40px;
+  font-size: 16px;
+}
+
+/* WALLET SECTION */
+.up-wallet-container {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  align-items: center;
+}
+
+/* ULTRA PREMIUM CARD */
+.up-card {
+  width: 85%;
+  max-width: 620px;
+  padding: 28px;
+  border-radius: 20px;
+}
+
+/* ANIMATED GRADIENT BORDER */
+.animated-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(18px);
+  border: 2px solid transparent;
+  background-clip: padding-box, border-box;
+  background-origin: border-box;
+  background-image: linear-gradient(#151515, #151515),
+    linear-gradient(135deg, #8f6aff, #52d2ff);
+  animation: gradientBorder 4s linear infinite;
+}
+
+@keyframes gradientBorder {
+  0% {
+    background-image: linear-gradient(#151515, #151515),
+      linear-gradient(135deg, #8f6aff, #52d2ff);
+  }
+  50% {
+    background-image: linear-gradient(#151515, #151515),
+      linear-gradient(135deg, #ff6ad5, #6bcbff);
+  }
+  100% {
+    background-image: linear-gradient(#151515, #151515),
+      linear-gradient(135deg, #8f6aff, #52d2ff);
+  }
+}
+
+/* CARD HEADER */
+.up-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.chain-icon {
+  width: 32px;
+  border-radius: 8px;
+}
+
+/* PREMIUM 3D BUTTON */
+.neon-3d-btn {
+  background: linear-gradient(135deg, #8254f6, #4fd1ff);
+  padding: 12px 20px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  color: white;
+  font-size: 15px;
+  box-shadow: 0 0 25px rgba(113, 81, 255, 0.55);
+  transition: 0.25s;
+}
+
+.neon-3d-btn:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 0 35px rgba(113, 81, 255, 0.85);
+}
+
+/* ADDRESS BOX */
+.up-address-glass {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  padding: 14px;
+  border-radius: 14px;
+  margin-top: 12px;
+  position: relative;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.addr-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.addr-text {
+  font-size: 14px;
+  color: #ddd;
+  word-break: break-all;
+}
+
+/* COPY BUTTON */
+.copy-btn {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  background: rgba(255, 255, 255, 0.12);
+  border: none;
+  padding: 5px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  font-size: 13px;
+}
+
+.copy-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* SEED PHRASE BOX */
+.seed-box-glass {
+  margin-top: 18px;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+}
+
+.seed-box-glass input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #fff;
+  outline: none;
+}
+
+/* FADE ANIMATION */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
