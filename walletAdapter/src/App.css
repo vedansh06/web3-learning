@@ -1,78 +1,170 @@
 body {
-  background: radial-gradient(circle at top, #101020, #050510);
-  color: #fff;
-  font-family: "Inter", sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
   margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at top, #0d1224, #050617 60%);
+  color: #e4e8ff;
+  font-family: "Inter", "Poppins", sans-serif;
+  overflow-x: hidden;
 }
 
-.app-container {
-  text-align: center;
-  width: 100%;
-  max-width: 500px;
-  padding: 2rem;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 0 25px rgba(0, 255, 255, 0.15);
+* {
+  transition: 0.25s ease;
 }
 
-.wallet-controls {
+.main-container {
   display: flex;
   justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  align-items: flex-start;
+  gap: 70px;
+  padding-top: 60px;
 }
 
-.airdrop-container {
+.left-panel {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 1rem;
+  gap: 25px;
 }
 
-.airdrop-container h2 {
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #00f0ff;
-  margin-bottom: 1rem;
+.solana-box {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(14px);
+  border-radius: 20px;
+  padding: 28px;
+  width: 320px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 40px rgba(75, 200, 255, 0.15);
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  animation: fadeIn 0.8s ease;
 }
 
-.airdrop-input {
-  width: 80%;
-  padding: 0.6rem 1rem;
-  border: none;
-  border-radius: 8px;
-  background: #1a1a2b;
-  color: #fff;
-  font-size: 1rem;
+.solana-box button {
+  font-size: 15px !important;
+  border-radius: 14px !important;
+  box-shadow: 0 0 18px rgba(100, 150, 255, 0.3);
+}
+
+.solana-box button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 26px rgba(100, 150, 255, 0.55);
+}
+
+.right-panel {
+  background: rgba(255, 255, 255, 0.045);
+  backdrop-filter: blur(22px);
+  border-radius: 24px;
+  padding: 40px;
+  width: 950px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 50px rgba(0, 180, 255, 0.13);
+
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  animation: slideUp 0.8s ease;
+}
+
+.form-row {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+input {
+  width: 260px;
+  padding: 14px 18px;
+  border-radius: 14px;
   outline: none;
-  transition: box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
+
+  color: #dfe4ff;
+  font-size: 15px;
 }
 
-.airdrop-input:focus {
-  box-shadow: 0 0 8px #00eaff;
+input:hover {
+  background: rgba(255, 255, 255, 0.12);
 }
 
-.airdrop-button {
-  background: linear-gradient(90deg, #00eaff, #0077ff);
-  color: white;
-  font-weight: 600;
-  padding: 0.6rem 1.5rem;
+input:focus {
+  background: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 0 12px rgba(120, 180, 255, 0.4);
+  border-color: rgba(180, 220, 255, 0.35);
+}
+
+button {
+  padding: 14px 26px;
+  border-radius: 14px;
   border: none;
-  border-radius: 8px;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  background: linear-gradient(90deg, #b06cff, #49d5ff);
+  color: white;
+
+  box-shadow: 0 0 18px rgba(120, 180, 255, 0.25);
 }
 
-.airdrop-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 10px #00bfff;
+button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 0 25px rgba(120, 180, 255, 0.45);
+  filter: brightness(110%);
 }
 
-.airdrop-button:active {
-  transform: translateY(1px);
-  box-shadow: none;
+.balance-box {
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 14px;
+  font-size: 17px;
+  width: 120px;
+  text-align: center;
+
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1100px) {
+  .main-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .right-panel {
+    width: 95%;
+  }
+
+  .solana-box {
+    width: 95%;
+  }
 }

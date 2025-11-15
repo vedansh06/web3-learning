@@ -1,33 +1,68 @@
+import React, { useMemo } from "react";
+
 import {
   ConnectionProvider,
   WalletProvider,
 } from "@solana/wallet-adapter-react";
 
+import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
+import { clusterApiUrl } from "@solana/web3.js";
+
 import {
   WalletModalProvider,
-  WalletDisconnectButton,
   WalletMultiButton,
+  WalletDisconnectButton,
 } from "@solana/wallet-adapter-react-ui";
 
-import { Airdrop } from "./RequestAirdrop";
+import {
+  PhantomWalletAdapter,
+  SolflareWalletAdapter,
+} from "@solana/wallet-adapter-wallets";
+
 import "@solana/wallet-adapter-react-ui/styles.css";
+
+import RequestAirdrop from "./RequestAirdrop";
+import ShowSolBalance from "./ShowSolBalance";
+import SendTokens from "./SendTokens";
+import SignMessage from "./SignMessage";
+
 import "./App.css";
 
 function App() {
+  const network = WalletAdapterNetwork.Devnet;
+
+  const endpoint = useMemo(() => clusterApiUrl(network), [network]);
+
+  const wallets = useMemo(
+    () => [new PhantomWalletAdapter(), new SolflareWalletAdapter()],
+    []
+  );
+
   return (
-    <div className="app-container">
-      <ConnectionProvider endpoint="https://api.devnet.solana.com">
-        <WalletProvider wallets={[]} autoConnect>
-          <WalletModalProvider>
-            <div className="wallet-controls">
-              <WalletMultiButton />
-              <WalletDisconnectButton />
+    <ConnectionProvider endpoint={endpoint}>
+      <WalletProvider wallets={wallets} autoConnect>
+        <WalletModalProvider>
+          {/* --- Main Layout --- */}
+          <div className="main-container">
+            {/* --- Left Side Wallet Buttons --- */}
+            <div className="left-panel">
+              <div className="solana-box">
+                <WalletMultiButton />
+                <WalletDisconnectButton />
+              </div>
             </div>
-            <Airdrop />
-          </WalletModalProvider>
-        </WalletProvider>
-      </ConnectionProvider>
-    </div>
+
+            {/* --- Right Dashboard Panel --- */}
+            <div className="right-panel">
+              <RequestAirdrop />
+              <ShowSolBalance />
+              <SendTokens />
+              <SignMessage />
+            </div>
+          </div>
+        </WalletModalProvider>
+      </WalletProvider>
+    </ConnectionProvider>
   );
 }
 
