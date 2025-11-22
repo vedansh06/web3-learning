@@ -1,0 +1,185 @@
+body {
+  background: #0d0d0d;
+  color: white;
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+/* Card Container */
+.card {
+  max-width: 500px;
+  width: 90%;
+  margin: 40px auto;
+  padding: 30px;
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 14px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Headings */
+.title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 25px;
+}
+
+.subtitle {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+/* Inputs */
+.input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: white;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #8b5cf6;
+}
+
+/* Buttons */
+.btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+  transition: 0.2s;
+}
+
+.primary { background: #7c3aed; }
+.primary:hover { background: #6d28d9; }
+
+.success { background: #17a34a; }
+.success:hover { background: #15803d; }
+
+.blue { background: #2563eb; }
+.blue:hover { background: #1d4ed8; }
+
+/* Mint address box */
+.mint-address {
+  background: #111;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  color: #bbb;
+  font-family: monospace;
+  word-break: break-all;
+  margin-top: 10px;
+}
+
+/* Wallet Button Container */
+.wallet-buttons {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  z-index: 999;
+}
+
+/* --------------------------------------------- */
+/* SOLANA WALLET ADAPTER — FULL UI FIX           */
+/* --------------------------------------------- */
+
+/* Modal background blur */
+.wallet-adapter-modal-wrapper {
+  background: rgba(0, 0, 0, 0.65) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+/* Modal box style */
+.wallet-adapter-modal {
+  background: #0f0f12 !important;
+  border-radius: 20px !important;
+  padding: 30px !important;
+  width: 420px !important;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8) !important;
+  overflow: hidden !important;
+}
+
+/* Title */
+.wallet-adapter-modal-title {
+  color: white !important;
+  font-size: 22px !important;
+  font-weight: 600 !important;
+  text-align: center !important;
+  margin-bottom: 25px !important;
+}
+
+/* Close Button */
+.wallet-adapter-modal-button-close {
+  background: #1c1c22 !important;
+  border-radius: 40px !important;
+  width: 36px !important;
+  height: 36px !important;
+}
+
+/* Wallet List Container */
+.wallet-adapter-modal-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 15px !important;
+  padding: 0 10px !important;
+  margin-top: 20px !important;
+
+  /* FIX floating issue */
+  position: relative !important;
+  z-index: 1000 !important;
+}
+
+/* Wallet option button */
+.wallet-adapter-modal-list .wallet-adapter-button {
+  background: #1a1a1f !important;
+  border-radius: 12px !important;
+  padding: 16px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: white !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 12px !important;
+
+  transition: 0.2s ease !important;
+  width: 100% !important;
+}
+
+/* Hover effect */
+.wallet-adapter-modal-list .wallet-adapter-button:hover {
+  background: #26262e !important;
+  transform: translateY(-2px);
+}
+
+/* Wallet icons */
+.wallet-adapter-modal-list .wallet-adapter-button img {
+  width: 28px !important;
+  height: 28px !important;
+}
+
+/* REMOVE "Detected" text */
+.wallet-adapter-modal-list .wallet-adapter-button span:last-child {
+  display: none !important;
+}
+
+/* Fix purple Brave/Phantom meta buttons */
+.wallet-adapter-button {
+  background: #6d28d9 !important;
+  border-radius: 10px !important;
+  padding: 10px 16px !important;
+  font-size: 14px !important;
+  width: 160px !important;
+  justify-content: center !important;
+}
